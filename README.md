@@ -35,7 +35,6 @@ Les contributions sont les bienvenues !
 
 ## Auteur
 
-- [Votre Nom / Pseudo](https://github.com/VotreCompte) – Créateur de ce projet  
 - Chaîne YouTube : [L'Atelier d'Unity](https://www.youtube.com/@l_atelier_d_unity)
 
 ## Licence
