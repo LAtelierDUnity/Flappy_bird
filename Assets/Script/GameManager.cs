@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
@@ -7,7 +9,12 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [Header("LunchGame")]
-    public bool firstTouch;
+    public bool firstTouch = false;
+    public bool isDead = false;
+
+    [Header("PipeList")]
+    [SerializeField]
+    private List<PipeMove> _allPipes;
 
     [Header("Ref")]
     [SerializeField]
@@ -15,9 +22,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Rigidbody2D _playerRb;
     [SerializeField]
+    private Animator _animator;
+    [SerializeField]
     private FloatingEffect _floatingEffect;
     [SerializeField]
     private GameObject _uiStartGame;
+    [SerializeField]
+    private LoopGround _ground;
+
 
     [Header("UI")]
     [SerializeField]
@@ -31,13 +43,6 @@ public class GameManager : MonoBehaviour
         instance = this;
         StopAll();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     private void StopAll()
     {
@@ -61,5 +66,22 @@ public class GameManager : MonoBehaviour
     {
         score++;
         _socreText.text = score.ToString();
+    }
+
+    public void AddPipe(PipeMove pipe)
+    {
+        _allPipes.Add(pipe);
+    }
+
+    public void RemovePipe(PipeMove pipe)
+    {
+        _allPipes.Remove(pipe);
+    }
+
+    public void PlayerDead()
+    {
+        isDead = true;
+        _ground.enabled = false;
+        _animator.enabled = false;
     }
 }

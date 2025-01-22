@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PipeManager : MonoBehaviour
@@ -17,13 +18,17 @@ public class PipeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_timer > _maxTime)
+        if (!GameManager.instance.isDead)
         {
-            SpawnPipe();
-            _timer = 0;
+            if (_timer > _maxTime)
+            {
+                SpawnPipe();
+                _timer = 0;
+            }
+
+            _timer += Time.deltaTime;
         }
 
-        _timer += Time.deltaTime;
     }
 
 
@@ -31,7 +36,20 @@ public class PipeManager : MonoBehaviour
     {
         Vector3 spawnPos = transform.position + new Vector3(0, Random.Range(-_heightRange, _heightRange), 0);
         GameObject pipe = Instantiate(_pipe, spawnPos, Quaternion.identity);
-        
-        Destroy(pipe, 10);
+        PipeMove pipeMove = pipe.GetComponent<PipeMove>();
+
+        GameManager.instance.AddPipe(pipeMove);
+
+        StartCoroutine(DestroyObject(pipe, 10));
+    }
+
+    private IEnumerator DestroyObject(GameObject pipe, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (!GameManager.instance.isDead)
+        {
+            Destroy(pipe);
+        }
     }
 }

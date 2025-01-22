@@ -492,10 +492,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstTouch: 0
+  isDead: 0
+  _allPipes: []
   _pipeManager: {fileID: 88639082}
   _playerRb: {fileID: 1192001637}
+  _animator: {fileID: 1192001634}
   _floatingEffect: {fileID: 1192001641}
   _uiStartGame: {fileID: 1364552788}
+  _ground: {fileID: 1119696439}
   _socreText: {fileID: 902974129}
 --- !u!4 &726731191
 Transform:
