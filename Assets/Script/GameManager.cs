@@ -30,14 +30,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private LoopGround _ground;
 
-
-    [Header("UI")]
-    [SerializeField]
-    private TextMeshProUGUI _socreText;
-
-    private int score;
-
-
     private void Awake()
     {
         instance = this;
@@ -50,6 +42,7 @@ public class GameManager : MonoBehaviour
         _playerRb.gravityScale = 0;
         _uiStartGame.SetActive(true);
         _floatingEffect.enabled = true;
+        ScoreManagger.instance.ResteMedalUI();
     }
 
 
@@ -60,12 +53,6 @@ public class GameManager : MonoBehaviour
         _uiStartGame.SetActive(false);
         _floatingEffect.enabled = false;
 
-    }
-
-    public void AddScore()
-    {
-        score++;
-        _socreText.text = score.ToString();
     }
 
     public void AddPipe(PipeMove pipe)
@@ -83,5 +70,6 @@ public class GameManager : MonoBehaviour
         isDead = true;
         _ground.enabled = false;
         _animator.enabled = false;
+        ScoreManagger.instance.CheckScorePlayer();
     }
 }

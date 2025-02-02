@@ -25,13 +25,16 @@ public class FlyManager : MonoBehaviour
 
     private void OnTouch()
     {
-        if (!gameManager.firstTouch)
+        if (!GameManager.instance.isDead)
         {
-            gameManager.firstTouch = true;
-            gameManager.AllActivate();
-        }
+            if (!gameManager.firstTouch)
+            {
+                gameManager.firstTouch = true;
+                gameManager.AllActivate();
+            }
 
-        rb.linearVelocity = Vector2.up * _velocity;
+            rb.linearVelocity = Vector2.up * _velocity;
+        }
     }
 
 

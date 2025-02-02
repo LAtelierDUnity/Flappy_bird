@@ -6,7 +6,7 @@ public class PipeDetector : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.instance.AddScore();
+            ScoreManagger.instance.AddScore();
         }
     }
 }
