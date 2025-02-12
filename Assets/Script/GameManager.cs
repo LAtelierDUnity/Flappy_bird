@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
@@ -71,5 +72,10 @@ public class GameManager : MonoBehaviour
         _ground.enabled = false;
         _animator.enabled = false;
         ScoreManagger.instance.CheckScorePlayer();
+    }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(1);
     }
 }

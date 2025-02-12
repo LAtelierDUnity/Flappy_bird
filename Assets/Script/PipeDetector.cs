@@ -7,6 +7,7 @@ public class PipeDetector : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             ScoreManagger.instance.AddScore();
+            SoundManager.instance.PlayWinpointSound();
         }
     }
 }

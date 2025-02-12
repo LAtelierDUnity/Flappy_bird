@@ -34,6 +34,8 @@ public class FlyManager : MonoBehaviour
             }
 
             rb.linearVelocity = Vector2.up * _velocity;
+
+            SoundManager.instance.PlayFlySound();
         }
     }
 
@@ -52,6 +54,7 @@ public class FlyManager : MonoBehaviour
         if(collision.gameObject.CompareTag("Pipe"))
         {
             GameManager.instance.PlayerDead();
+            StartCoroutine(SoundManager.instance.PlayDeadSound());
         }
     }
 }

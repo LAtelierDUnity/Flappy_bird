@@ -6,6 +6,7 @@ public class MenuManager : MonoBehaviour
 
     public void PlayGame()
     {
+        SoundManager.instance.PlayLoadSoundScene();
         SceneManager.LoadScene(1);
     }
 
